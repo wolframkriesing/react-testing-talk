@@ -1,4 +1,5 @@
-
+import React from 'react';
+import assert from 'assert';
 
 describe('calculator example', function() {
 
@@ -12,6 +13,7 @@ describe('calculator example', function() {
     
     // render the calculator
     
+    const screenContent = null;
     assert.equal(screenContent, '');
   });
   
