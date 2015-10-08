@@ -64,4 +64,38 @@ describe('calculator example', function() {
     
   });
 
+  describe('using shallow renderer', function() {
+
+    let renderer, rendered, screen;
+    beforeEach(function() {
+      renderer = TestUtils.createRenderer();
+      renderer.render(<Calculator />);
+      rendered = renderer.getRenderOutput();
+      screen = rendered.props.children[0].props.children;
+    });
+
+    function clickButton(which = 1) {
+      const buttonNode = rendered.props.children[which];
+      buttonNode.props.onClick();
+      rendered = renderer.getRenderOutput();
+      screen = rendered.props.children[0].props.children;
+    }
+
+    it('initially the screen is empty', function() {
+      assert.equal(screen, '0');
+    });
+    
+    it('a click on 1 renders 1 onto the screen', function() {
+      clickButton(1);
+      assert.equal(screen, '1');
+    });
+    
+    it('a click on 1+2 renders 12 onto the screen', function() {
+      clickButton(1);
+      clickButton(2);
+      assert.equal(screen, '12');
+    });
+    
+  });
+  
 });
