@@ -30,34 +30,33 @@ describe('calculator example', function() {
 
   describe('using jsdom', function() {
 
-    it('initially the screen is empty', function() {
-      const rendered = TestUtils.renderIntoDocument(<Calculator />);
-      const divs = TestUtils.scryRenderedDOMComponentsWithTag(rendered, 'div');
-
-      const screenContent = divs[1].innerHTML;
-      assert.equal(screenContent, '0');
+    let rendered, divs;
+    beforeEach(function() {
+      rendered = TestUtils.renderIntoDocument(<Calculator />);
+      divs = TestUtils.scryRenderedDOMComponentsWithTag(rendered, 'div');
     });
-
-    function clickButton(rendered, which = 1) {
+    
+    function clickButton(which = 1) {
       const buttons = TestUtils.scryRenderedDOMComponentsWithTag(rendered, 'button');
       const buttonNode = ReactDOM.findDOMNode(buttons[which - 1]);
       TestUtils.Simulate.click(buttonNode);
     }
 
+    it('initially the screen is empty', function() {
+      const screenContent = divs[1].innerHTML;
+      assert.equal(screenContent, '0');
+    });
+
     it('a click on 1 renders 1 onto the screen', function() {
-      const rendered = TestUtils.renderIntoDocument(<Calculator />);
-      const divs = TestUtils.scryRenderedDOMComponentsWithTag(rendered, 'div');
-      clickButton(rendered);
+      clickButton(1);
 
       const screenContent = divs[1].innerHTML;
       assert.equal(screenContent, '1');
     });
 
     it('a click on 1 and 2 renders 12 onto the screen', function() {
-      const rendered = TestUtils.renderIntoDocument(<Calculator />);
-      const divs = TestUtils.scryRenderedDOMComponentsWithTag(rendered, 'div');
-      clickButton(rendered, 1);
-      clickButton(rendered, 2);
+      clickButton(1);
+      clickButton(2);
 
       const screenContent = divs[1].innerHTML;
       assert.equal(screenContent, '12');
