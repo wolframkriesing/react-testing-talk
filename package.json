@@ -4,7 +4,7 @@
   "description": "react component testing talk",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel/register test"
+    "test": "mocha --compilers js:babel/register test --slow 1"
   },
   "keywords": [
     "react",
