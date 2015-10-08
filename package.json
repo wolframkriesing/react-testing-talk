@@ -1,0 +1,16 @@
+{
+  "name": "react-testing",
+  "version": "1.0.0",
+  "description": "react component testing talk",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "keywords": [
+    "react",
+    "shallow",
+    "tests"
+  ],
+  "author": "Wolfram Kriesing <wolfram@kriesing.de>",
+  "license": "MIT"
+}
