@@ -4,7 +4,7 @@
   "description": "react component testing talk",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test"
+    "test": "mocha --compilers js:babel/register test"
   },
   "keywords": [
     "react",
@@ -16,5 +16,9 @@
   "dependencies": {
     "react": "^0.14.0",
     "react-dom": "^0.14.0"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "mocha": "^2.3.3"
   }
 }
